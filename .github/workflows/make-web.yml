@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
       - name: Publish Gitbook
         uses: tuliren/publish-gitbook@v1.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
