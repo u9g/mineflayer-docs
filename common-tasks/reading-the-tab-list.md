@@ -24,7 +24,7 @@ console.log(bot.tablist.footer.toString()) // 'Ranks, Boosters & MORE! STORE.HYP
 Simple enough right? Just make sure that you call these functions at least after the bot spawns. This can be done by putting the code into a `spawn` event in mineflayer. Like so:
 
 ```javascript
-const bot  = createBot({...})
+const bot = createBot({...})
 
 bot.once('spawn', () => {
     console.log(bot.tablist.header.toString()) // 'You are playing on MC.HYPIXEL.NET'
