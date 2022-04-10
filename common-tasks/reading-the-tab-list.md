@@ -1,7 +1,3 @@
----
-description: So you want to read the tab list with your bot...
----
-
 # Reading the Tab List
 
 The tablist in minecraft looks like this:
@@ -14,7 +10,7 @@ So how do we read the `"You are playing on MC.HYPIXEL.NET"` and `"Ranks, Booster
 
 There is a convenient object on the bot object called `bot.tablist`, this object has a `header` and a `footer` key on it which are [`ChatMessage`](https://github.com/PrismarineJS/prismarine-chat#chatmessagemessagedisplaywarning) objects.
 
-``[`ChatMessage`](https://github.com/PrismarineJS/prismarine-chat#chatmessagemessagedisplaywarning) objects have a `.`[`toString`](https://github.com/PrismarineJS/prismarine-chat#chattostringlang)`()` function on them that allows converting them to flat text.
+[`ChatMessage`](https://github.com/PrismarineJS/prismarine-chat#chatmessagemessagedisplaywarning) objects have a [`.toString()`](https://github.com/PrismarineJS/prismarine-chat#chattostringlang) function on them that allows converting them to flat text.
 
 ```javascript
 console.log(bot.tablist.header.toString()) // 'You are playing on MC.HYPIXEL.NET'
