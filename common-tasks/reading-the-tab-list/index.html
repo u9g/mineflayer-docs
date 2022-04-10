@@ -9,21 +9,23 @@
     <meta name="generator" content="Retype 2.2">
 
     <!-- Primary Meta Tags -->
-    <title>Mineflayer Documentation</title>
-    <meta name="title" content="Mineflayer Documentation">
-    <meta name="description" content="Welcome to Mineflayer!" />
+    <title>Reading the Tab List</title>
+    <meta name="title" content="Reading the Tab List">
+    <meta name="description" content="So you want to read the tab list with your bot..." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/">
-    <meta property="og:title" content="Mineflayer Documentation">
-    <meta property="og:description" content="Welcome to Mineflayer!">
+    <meta property="og:url" content="/common-tasks/reading-the-tab-list/">
+    <meta property="og:title" content="Reading the Tab List">
+    <meta property="og:description" content="So you want to read the tab list with your bot...">
+    <meta property="og:image" content="https://i.imgur.com/O40uL1W.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/">
-    <meta property="twitter:title" content="Mineflayer Documentation">
-    <meta property="twitter:description" content="Welcome to Mineflayer!">
+    <meta property="twitter:url" content="/common-tasks/reading-the-tab-list/">
+    <meta property="twitter:title" content="Reading the Tab List">
+    <meta property="twitter:description" content="So you want to read the tab list with your bot...">
+    <meta property="twitter:image" content="https://i.imgur.com/O40uL1W.png">
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -32,6 +34,7 @@
     <script type="text/javascript" src="/resources/js/config.js?v=2.2.702883896728" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=2.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=2.2.702883896728" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=2.2.702883896728" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -161,14 +164,59 @@
                                 <div id="docs-sidebar-right-toggle"></div>
                 
                                 <!-- Page content  -->
-<doc-anchor-target id="mineflayer-documentation" class="break-words">
+<doc-anchor-target id="reading-the-tab-list" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#mineflayer-documentation">#</doc-anchor-trigger>
-        <span>Mineflayer Documentation</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#reading-the-tab-list">#</doc-anchor-trigger>
+        <span>Reading the Tab List</span>
     </h1>
 </doc-anchor-target>
-<p>Welcome to the documentation for mineflayer. Mineflayer is a library for making mineflayer bots using nodejs.</p>
-<p>If at any point in this guide something doesn&#x27;t make sense, or you get different output then is expected by the guide, feel free to join the <a href="https://discord.gg/GsEFRM8">mineflayer discord</a> and ask in #help</p>
+<p>The tablist in minecraft looks like this:</p>
+<p><figure class="content-center">
+    <img src="https://i.imgur.com/O40uL1W.png" alt="Hypixel's Tab List" />
+    <figcaption class="caption">Hypixel&#x27;s Tab List</figcaption>
+</figure>
+</p>
+<doc-anchor-target id="reading-the-header-and-footer">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#reading-the-header-and-footer">#</doc-anchor-trigger>
+        <span>Reading the Header and Footer...</span>
+    </h3>
+</doc-anchor-target>
+<p>So how do we read the <code v-pre>&quot;You are playing on MC.HYPIXEL.NET&quot;</code> and <code v-pre>&quot;Ranks, Boosters &amp; MORE! STORE.HYPIXEL.NET&quot;</code> part?</p>
+<p>There is a convenient object on the bot object called <code v-pre>bot.tablist</code>, this object has a <code v-pre>header</code> and a <code v-pre>footer</code> key on it which are <a href="https://github.com/PrismarineJS/prismarine-chat#chatmessagemessagedisplaywarning"><code v-pre>ChatMessage</code></a> objects.</p>
+<p>&#x60;&#x60;<a href="https://github.com/PrismarineJS/prismarine-chat#chatmessagemessagedisplaywarning"><code v-pre>ChatMessage</code></a> objects have a <code v-pre>.</code><a href="https://github.com/PrismarineJS/prismarine-chat#chattostringlang"><code v-pre>toString</code></a><code v-pre>()</code> function on them that allows converting them to flat text.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">console.log(bot.tablist.header.toString()) // 'You are playing on MC.HYPIXEL.NET'
+console.log(bot.tablist.footer.toString()) // 'Ranks, Boosters &amp; MORE! STORE.HYPIXEL.NET'</code></pre>
+</doc-codeblock></div>
+<p>Simple enough right? Just make sure that you call these functions at least after the bot spawns. This can be done by putting the code into a <code v-pre>spawn</code> event in mineflayer. Like so:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">const bot = createBot({...})
+
+bot.once('spawn', () =&gt; {
+    console.log(bot.tablist.header.toString()) // 'You are playing on MC.HYPIXEL.NET'
+    console.log(bot.tablist.footer.toString()) // 'Ranks, Boosters &amp; MORE! STORE.HYPIXEL.NET'
+})</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="now-how-do-we-read-the-players">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#now-how-do-we-read-the-players">#</doc-anchor-trigger>
+        <span>Now, How do we read the players?</span>
+    </h3>
+</doc-anchor-target>
+<p>First, we need to know how to find the active players on the server. We have a <a href="https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md#botplayers"><code v-pre>bot.players</code></a> map of player -&gt; player object.</p>
+<p>So in order to get all the players, we just need to get all the players out of the <code v-pre>bot.players</code> map. We can do that using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values"><code v-pre>Object.values</code></a><code v-pre>(bot.players)</code> which will give us an array of player objects.</p>
+<p>These player objects have a convenient function <code v-pre>.nameOnTablist()</code>, which returns a <a href="https://github.com/PrismarineJS/prismarine-chat#chatmessagemessagedisplaywarning"><code v-pre>ChatMessage</code></a> object or null.</p>
+<p>Knowing all that above, we can put some code together to list the players on the tablist like so:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-javascript"><code v-pre class="language-javascript">for (const player of Object.values(bot.players)) {
+    const name = player.nameOnTablist()
+    if (!name) return
+    console.log(name.toString())
+}</code></pre>
+</doc-codeblock></div>
+<p>This will print all of the names on the tablist like shown above.</p>
+<p>As talked about above, this should only be done after the bot has called the <code v-pre>spawn</code> event. Putting this code into the spawn block like shown above will suffice.</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -178,16 +226,16 @@
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/getting-started/starting-your-mineflayer-bot/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
+                                                <span class="block mt-1">Starting your mineflayer bot</span>
+                                            </span>
+                                        </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/getting-started/starting-your-mineflayer-bot/">
-                                            <span>
-                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">Starting your mineflayer bot</span>
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                        </a>
                                     </div>
                                 </nav>
                             </footer>
@@ -228,6 +276,6 @@
 
     <div id="docs-overlay-target"></div>
 
-    <script>window.__DOCS__ = { "title": "Mineflayer Documentation", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+    <script>window.__DOCS__ = { "title": "Reading the Tab List", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
 </body>
 </html>
