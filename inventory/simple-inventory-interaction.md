@@ -19,5 +19,3 @@ const ironSwords = items.filter(item => item?.type === ironSwordId)
 console.log(`Bot has ${ironSwords.length} iron swords!`)
 ```
 
-### Finding what's in your offhand slot
-
