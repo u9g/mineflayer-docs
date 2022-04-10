@@ -18,9 +18,9 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - uses: retypeapp/action-build@latest
+      - uses: retypeapp/action-build@v2
 
-      - uses: retypeapp/action-github-pages@latest
+      - uses: retypeapp/action-github-pages@v2
         with:
           branch: gh-pages
           update-branch: true
