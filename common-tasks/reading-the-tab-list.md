@@ -41,7 +41,7 @@ Knowing all that above, we can put some code together to list the players on the
 ```javascript
 for (const player of Object.values(bot.players)) {
     const name = player.nameOnTablist()
-    if (!name) return
+    if (!name) continue
     console.log(name.toString())
 }
 ```
