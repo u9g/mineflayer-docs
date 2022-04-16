@@ -12,5 +12,5 @@ From very early, minecraft items have had an id, that is changed every minecraft
 4. Use the name from step 3 with the object from step 2. For example, If I was looking for an iron sword, I would use `bot.registry.itemsByName.iron_sword.id`
 
 !!!info Finding item or block names
-At some point in your mineflayer career, you will have to find the name of an item or block as it's called in mineflayer. When you do, the link is [at this website](https://minecraft-data.prismarine.js.org/?v=1.18.2)
+At some point in your mineflayer career, you will have to find the name of an item or block as it's called in minecraft-data. When you do, the link is [at this website](https://minecraft-data.prismarine.js.org/?v=1.18.2)
 !!!
