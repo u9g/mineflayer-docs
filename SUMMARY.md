@@ -9,7 +9,7 @@
 
 ## 🎒 Inventory
 
-* [Simple inventory interaction](inventory/simple-inventory-interaction.md)
+* [Finding items in bot's inventory](inventory/simple-inventory-interaction.md)
 
 ## 📖 Common Tasks
 
