@@ -30,12 +30,12 @@
 
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/mineflayer-docs/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/mineflayer-docs/resources/css/retype.css?v=2.2.703465959417" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/mineflayer-docs/resources/css/retype.css?v=2.2.703466107866" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/mineflayer-docs/resources/js/config.js?v=2.2.703465959417" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/mineflayer-docs/resources/js/config.js?v=2.2.703466107866" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/mineflayer-docs/resources/js/retype.js?v=2.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/mineflayer-docs/resources/js/lunr.js?v=2.2.703465959417" defer></script>
-    <script id="prism-js" type="text/javascript" src="/mineflayer-docs/resources/js/prism.js?v=2.2.703465959417" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/mineflayer-docs/resources/js/lunr.js?v=2.2.703466107866" defer></script>
+    <script id="prism-js" type="text/javascript" src="/mineflayer-docs/resources/js/prism.js?v=2.2.703466107866" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -173,8 +173,8 @@
 <ol>
 <li>First, you will want to listen to chat for a message in which you will tell the bot to drop it&#x27;s items in your direction.</li>
 </ol>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">const bot = createBot([...])
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<pre class="language-javascript" data-line="3"><code v-pre class="language-javascript">const bot = createBot([...])
 
 bot.on('chat', async (username, msg) =&gt; {
     if (msg !== 'drop items') return
@@ -197,8 +197,8 @@ bot.on('chat', async (username, msg) =&gt; {
 </div>
  </p>
 <p>     Now that we have the code for looking at the player, we can add that to our bot&#x27;s chat listener:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">const bot = createBot([...])
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<pre class="language-javascript" data-line="5"><code v-pre class="language-javascript">const bot = createBot([...])
 
 bot.on('chat', async (username, msg) =&gt; {
     if (msg !== 'drop items') return
@@ -221,8 +221,8 @@ bot.on('chat', async (username, msg) =&gt; {
 </div>
 </p>
 <p>With that added, our code will now look like this:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">const bot = createBot([...])
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<pre class="language-javascript" data-line="7-11"><code v-pre class="language-javascript">const bot = createBot([...])
 
 bot.on('chat', async (username, msg) =&gt; {
   if (msg !== 'drop items') return
@@ -236,8 +236,8 @@ bot.on('chat', async (username, msg) =&gt; {
 })</code></pre>
 </doc-codeblock></div>
 <p>4. Finally, we have to loop through those items, and call <a href="https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md#bottossstackitem"><code v-pre>bot.tossStack</code></a> on the stacks of items</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-javascript"><code v-pre class="language-javascript">const bot = createBot([...])
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<pre class="language-javascript" data-line="12-14"><code v-pre class="language-javascript">const bot = createBot([...])
 
 bot.on('chat', async (username, msg) =&gt; {
   if (msg !== 'drop items') return
@@ -266,8 +266,8 @@ bot.on('chat', async (username, msg) =&gt; {
     </h4>
 </doc-anchor-target>
 <p>This is exactly the same as done above, except we no longer have to filter the items, since we want to drop everything in the bot&#x27;s inventory</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-diff"><code v-pre class="language-diff">const bot = createBot([...])
+<div class="codeblock-wrapper"><doc-codeblock line-numbers>
+<pre class="language-diff" data-line="10"><code v-pre class="language-diff">const bot = createBot([...])
 
 bot.on('chat', async (username, msg) =&gt; {
   if (msg !== 'drop items') return
