@@ -1,4 +1,4 @@
-# Simple inventory interaction
+# Finding items in bot's inventory
 
 ![Typical Minecraft inventory](https://i.imgur.com/0HbPRbX.png)
 
@@ -14,8 +14,10 @@ The final code should look like this:
 
 ```javascript
 const ironSwordId = bot.registry.itemsByName.iron_sword.id
-const items = bot.inventory.items()
-const ironSwords = items.filter(item => item?.type === ironSwordId)
-console.log(`Bot has ${ironSwords.length} iron swords!`)
+const ironSwords = bot.inventory.items().filter(item => item?.type === ironSwordId)
+const itemCount = ironSwords.reduce((acc, swordStack) => acc + swordStack.count, 0)
+console.log(`Bot has ${itemCount.length} iron swords!`)
+// For counting the number of items in the inventory of a stackable item, this can be used
+const steakCount = bot.inventory.count(bot.registry.itemsByName.steak.id)
+console.log(`Bot has ${steakCount} steak`)
 ```
-
