@@ -10,7 +10,7 @@ So you're bot has been working for a while now, how do you drop the items to a p
 
 1. First, you will want to listen to chat for a message in which you will tell the bot to drop it's items in your direction.
 
-```javascript
+```javascript #3
 const bot = createBot([...])
 
 bot.on('chat', async (username, msg) => {
@@ -24,7 +24,7 @@ bot.on('chat', async (username, msg) => {
 
 &#x20;    Now that we have the code for looking at the player, we can add that to our bot's chat listener:
 
-```javascript
+```javascript #5
 const bot = createBot([...])
 
 bot.on('chat', async (username, msg) => {
@@ -40,7 +40,7 @@ bot.on('chat', async (username, msg) => {
 
 With that added, our code will now look like this:
 
-```javascript
+```javascript #7-11
 const bot = createBot([...])
 
 bot.on('chat', async (username, msg) => {
@@ -57,7 +57,7 @@ bot.on('chat', async (username, msg) => {
 
 4\. Finally, we have to loop through those items, and call [`bot.tossStack`](https://github.com/PrismarineJS/mineflayer/blob/master/docs/api.md#bottossstackitem) on the stacks of items
 
-```javascript
+```javascript #12-14
 const bot = createBot([...])
 
 bot.on('chat', async (username, msg) => {
@@ -81,7 +81,7 @@ bot.on('chat', async (username, msg) => {
 
 This is exactly the same as done above, except we no longer have to filter the items, since we want to drop everything in the bot's inventory
 
-```diff
+```diff #10
 const bot = createBot([...])
 
 bot.on('chat', async (username, msg) => {
