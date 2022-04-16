@@ -20,7 +20,7 @@ bot.on('chat', async (username, msg) => {
 })
 ```
 
-2\. To look at the player, take a look at [looking-at-a-player.md](../common-tasks/looking-at-a-player.md "mention")&#x20;
+2\. To look at the player, take a look at [!ref](../common-tasks/looking-at-a-player.md "mention")&#x20;
 
 &#x20;    Now that we have the code for looking at the player, we can add that to our bot's chat listener:
 
@@ -36,7 +36,7 @@ bot.on('chat', async (username, msg) => {
 
 
 
-3\. To find what items to drop, take a look at [simple-inventory-interaction.md](simple-inventory-interaction.md "mention")
+3\. To find what items to drop, take a look at [!ref](simple-inventory-interaction.md)
 
 With that added, our code will now look like this:
 
