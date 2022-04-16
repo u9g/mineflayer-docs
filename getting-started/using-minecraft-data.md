@@ -8,5 +8,9 @@ From very early, minecraft items have had an id, that is changed every minecraft
 
 1. Find an instance of [`minecraft-data`](https://github.com/PrismarineJS/node-minecraft-data) to use. minecraft-data comes bundled inside of mineflayer under `bot.registry`, which allows for quick access.
 2. You can simply use `bot.registry.itemsByName.name.id` with name being the name of an item.
-3. Find the name of the item in minecraft-data [using this website](https://minecraft-data.prismarine.js.org/?v=1.18.2). Make sure to select your minecraft version at the top, then select items, then search for the item you want, and write down the name from the name tab for later.
+3. Find the name of the item in minecraft-data. (For more info look at the info below)
 4. Use the name from step 3 with the object from step 2. For example, If I was looking for an iron sword, I would use `bot.registry.itemsByName.iron_sword.id`
+
+!!!info Finding item or block names
+At some point in your mineflayer career, you will have to find the name of an item or block as it's called in mineflayer. When you do, the link is [at this website](https://minecraft-data.prismarine.js.org/?v=1.18.2)
+!!!
