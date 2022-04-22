@@ -20,7 +20,7 @@ bot.on('chat', async (username, msg) => {
 })
 ```
 
-2\. To look at the player, take a look at ,take a look at [Looking at a player](looking-at-a-player.md)&#x20;
+2\. To look at the player, take a look at ,take a look at [Looking at a player](/common-tasks/looking-at-a-player.md)&#x20;
 
 &#x20;    Now that we have the code for looking at the player, we can add that to our bot's chat listener:
 
